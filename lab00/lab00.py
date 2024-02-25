@@ -5,5 +5,10 @@ def twenty_twenty_four():
     >>> twenty_twenty_four()
     2024
     """
-    return ______
+    yearString="2024"
+    year=int(yearString)
+    print(yearString)
+    return 
 
+
+twenty_twenty_four()
