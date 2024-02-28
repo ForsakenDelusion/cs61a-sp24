@@ -66,6 +66,12 @@ def largest_factor(n):
     1
     """
     "*** YOUR CODE HERE ***"
+    i = n-1#这里从n-1开始是因为如果一开始是1,第一次循环return 1程序就结束了
+    while i < n :
+        if (n % i == 0):
+            return i
+        i-=1
+
 
 
 def hailstone(n):
