@@ -12,7 +12,7 @@ def falling(n, k):
     """
     "*** YOUR CODE HERE ***"
     i=1
-    sum=1#不能用i,sum=1这种写法
+    sum=1#不能用i,sum=1这种写法,不知道为什么
     while i <= k :
         sum = sum*n
         n -= 1
