@@ -11,11 +11,13 @@ def falling(n, k):
     1
     """
     "*** YOUR CODE HERE ***"
-    i，sum=1
-    while i <= k
-        sum = sum,n
+    i=1
+    sum=1
+    while i <= k :
+        sum = sum*n
         n -= 1
         i+=1
+    return sum
 
 
 def divisible_by_k(n, k):
