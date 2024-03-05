@@ -41,6 +41,18 @@ def divisible_by_k(n, k):
     0
     """
     "*** YOUR CODE HERE ***"
+    i = 1
+    final = 0
+    if n%k==0:
+        while final < n:
+            final = i*k
+            print(final)
+            i+=1
+    else:
+        return 0
+    
+    return i-1
+
 
 
 def sum_digits(y):
@@ -57,6 +69,10 @@ def sum_digits(y):
     6
     """
     "*** YOUR CODE HERE ***"
+    total = 0
+    while y > 0:
+        total,y = total + y%10,y//10 #这是个多重赋值语句
+    return total
 
 
 def double_eights(n):
@@ -75,4 +91,23 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
+    i=0
+    num=0
+    while n>0:
+        num,n=n%10,n//10
+        if num==8:
+            i+=1
+            if i==2:
+                return True
+        else:
+            i=0
+        
+    if i>0:
+        if i%2 == 0:
+            return True
+        else:
+            return False
+    else:
+        return False
+
 
