@@ -54,7 +54,51 @@ def boar_brawl(player_score, opponent_score):
     """
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
-    
+    getScore=0
+    opponentDigit=detectNum(opponent_score)
+    if opponentDigit>=2:
+        opponentDigit=getTensDigit(opponent_score)
+        currentDigit=getOnesDigit(player_score)
+        sumNum=3*abs(opponentDigit-currentDigit)
+        if sumNum==0:
+            getScore=1
+            return getScore
+        else:
+            getScore=sumNum
+            return getScore
+
+    else:
+        opponentDigit=0
+        currentDigit=getOnesDigit(player_score)
+        sumNum=3*abs(opponentDigit-currentDigit)
+        if sumNum==0:
+            getScore=1
+            return getScore
+        else:
+            getScore=sumNum
+            return getScore
+
+def detectNum(num):
+    cout=0
+    digit=1
+    n=num
+    while n>0:
+        num,n=n%10,num//10
+        cout+=1
+    digiti=cout
+    return cout
+
+def getOnesDigit(num):
+    num=num%10
+    return num
+
+def getTensDigit(num):
+    cout=2
+    n=num
+    while cout>0:
+        num,n=n%10,num//10
+        cout-=1
+    return num  
     # END PROBLEM 2
 
 
@@ -73,6 +117,10 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
     assert num_rolls <= 10, 'Cannot roll more than 10 dice.'
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    if num_rolls==0:
+        return boar_brawl(player_score,opponent_score)
+    else:
+        return roll_dice(num_rolls,dice)
     # END PROBLEM 3
 
 
