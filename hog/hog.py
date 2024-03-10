@@ -121,6 +121,7 @@ def take_turn(num_rolls, player_score, opponent_score, dice=six_sided):
         return boar_brawl(player_score,opponent_score)
     else:
         return roll_dice(num_rolls,dice)
+    # finshed in 3.10
     # END PROBLEM 3
 
 
