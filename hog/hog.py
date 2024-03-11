@@ -147,26 +147,40 @@ def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
-    num=1
+    factors=1
     cout=0
-    while num<=n:
-        if is_prime(num):
+    while factors<=n:
+        if n%factors==0:
             cout+=1
-            return cout
+        factors+=1
+    return cout
     # END PROBLEM 4
 
 def sus_points(score):
     """Return the new score of a player taking into account the Sus Fuss rule."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    factors=num_factors(score)
+    getSusPoints=score
+    if factors==3 or factors==4:
+        nextPrime=score
+        while not is_prime(nextPrime) :
+            nextPrime+=1
+        getSusPoints=nextPrime
+        return getSusPoints
+    else:
+        return getSusPoints
     # END PROBLEM 4
-
+ 
 def sus_update(num_rolls, player_score, opponent_score, dice=six_sided):
     """Return the total score of a player who starts their turn with
     PLAYER_SCORE and then rolls NUM_ROLLS DICE, *including* Sus Fuss.
     """
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    return sus_points(simple_update(num_rolls,player_score,opponent_score,dice))
+        
+    
     # END PROBLEM 4
 
 
@@ -206,6 +220,32 @@ def play(strategy0, strategy1, update,
     who = 0  # Who is about to take a turn, 0 (first) or 1 (second)
     # BEGIN PROBLEM 5
     "*** YOUR CODE HERE ***"
+    
+    while score0 < goal and score1 < goal:
+        who,score0,score1=currentTurn(who,update,strategy0,strategy1,score0,score1,dice)
+    return score0,score1
+        
+    
+def currentTurn(who,update,strategy0,strategy1,score0,score1,dice):
+    chosenUpdate=update
+    
+    if who==0:
+        chosenStrategy=strategy0(score0,score1)
+        numRolls=chosenStrategy
+        currentScore=chosenUpdate(numRolls,score0,score1,dice)
+    else:
+        chosenStrategy=strategy1(score1,score0)
+        numRolls=chosenStrategy
+        currentScore=chosenUpdate(numRolls,score1,score0,dice)
+        
+    if who==0:
+        score0=currentScore
+    else:
+        score1=currentScore
+        
+    who=1-who
+    return who,score0,score1
+
     # END PROBLEM 5
     return score0, score1
 
