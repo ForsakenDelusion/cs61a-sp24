@@ -147,6 +147,12 @@ def num_factors(n):
     """Return the number of factors of N, including 1 and N itself."""
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    num=1
+    cout=0
+    while num<=n:
+        if is_prime(num):
+            cout+=1
+            return cout
     # END PROBLEM 4
 
 def sus_points(score):
