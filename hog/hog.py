@@ -271,6 +271,10 @@ def always_roll(n):
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
+    def returnNum(score0,score1):
+        return n
+    
+    return returnNum
     # END PROBLEM 6
 
 
@@ -302,6 +306,23 @@ def is_always_roll(strategy, goal=GOAL):
     """
     # BEGIN PROBLEM 7
     "*** YOUR CODE HERE ***"
+    def getBlooean(strategy,goal):
+        score0=0
+        score1=0
+        while score0<goal:
+            while score1<goal:
+                if strategy(score0,score1)==strategy(0,0):
+                    score1+=1
+                else:
+                    return False
+            score0+=1
+            score1=0
+        return True    
+    
+    if getBlooean(strategy,goal):
+        return True
+    else:
+        return False
     # END PROBLEM 7
 
 
