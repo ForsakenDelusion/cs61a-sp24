@@ -339,6 +339,18 @@ def make_averaged(original_function, samples_count=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+
+    def averageLoop(*args):
+        sum=0
+        count=1
+        while count <= samples_count:
+            sum+=original_function(*args)
+            count+=1
+        return sum/samples_count
+
+    return averageLoop
+
+
     # END PROBLEM 8
 
 
@@ -353,6 +365,16 @@ def max_scoring_num_rolls(dice=six_sided, samples_count=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    averageFunc=make_averaged(roll_dice,samples_count)  
+    numRolls=1
+    currentAverage=0
+    while numRolls<=10:
+        detectAverage=averageFunc(numRolls,dice) 
+        if detectAverage>currentAverage:
+            currentAverage = detectAverage
+            currentRolls=numRolls
+        numRolls+=1
+    return currentRolls
     # END PROBLEM 9
 
 
@@ -397,13 +419,33 @@ def boar_strategy(score, opponent_score, threshold=11, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Sus Fuss.
     """
     # BEGIN PROBLEM 10
-    return num_rolls  # Remove this line once implemented.
+    boarNum=boar_brawl(score,opponent_score)
+    
+    if boarNum>=threshold:
+        return 0
+    else:
+        return num_rolls
+    
+    
+    
+     # Remove this line once implemented.
     # END PROBLEM 10
 
 
 def sus_strategy(score, opponent_score, threshold=11, num_rolls=6):
     """This strategy returns 0 dice when your score would increase by at least threshold."""
     # BEGIN PROBLEM 11
+    boarNum=boar_brawl(score,opponent_score)
+    susNum=sus_update(0,score,opponent_score)-score
+    if boarNum < threshold:
+        if susNum >= threshold:
+            return 0
+        else:
+            return num_rolls
+    else:
+        return 0
+    
+     
     return num_rolls  # Remove this line once implemented.
     # END PROBLEM 11
 
